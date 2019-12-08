@@ -1,51 +1,12 @@
 module LivePlots
 
-export LivePlot, transfer!, plotstyle, plotdata
+export LivePlot, PlotStyle, PlotData, plotstyle, plotdata, transfer!
 
-using Plots: Plot
+using Plots: Plot, Subplot, AbstractBackend, plot
 
-struct LivePlot
-    function LivePlot(::Symbol)
-        new()
-    end
-end
-
-struct PlotStyle
-end
-
-struct PlotData
-end
-
-function plotstyle(::Plot)::PlotStyle
-    PlotStyle()
-end
-
-function plotdata(::Plot)::PlotData
-    PlotData()
-end
-
-function plotstyle(::LivePlot)::PlotStyle
-    PlotStyle()
-end
-
-function plotdata(::LivePlot)::PlotData
-    PlotData()
-end
-
-function transfer!(::Plot, ::PlotStyle)
-    PlotStyle()
-end
-
-function transfer!(::Plot, ::PlotData)
-    PlotData()
-end
-
-function transfer!(::LivePlot, ::PlotStyle)
-    PlotStyle()
-end
-
-function transfer!(::LivePlot, ::PlotData)
-    PlotData()
-end
+include("types.jl")
+include("plotstyle.jl")
+include("plotdata.jl")
+include("transfer.jl")
 
 end # module LivePlots
